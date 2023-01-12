@@ -1,0 +1,3 @@
+Ctrl+/ --single line comments
+Ctrl+Shift+/ --multiple line cooments
+Ctrl+Space -- for auto complete component name

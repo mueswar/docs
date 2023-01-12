@@ -1,0 +1,126 @@
+javascript
+database
+core java
+Spring
+
+how can we create thread safe object
+how to compare two userdefine objects
+
+have you ever worked on threading concepts
+give us one use case on threading
+
+what kind of spring modules you used
+
+
+RDMS
+	what kind of caching techniques are you using
+	transaction isolation levels
+
+NoSql
+	how are you hadling joins?
+	how can we connect multiple databases
+
+Security
+	how are you providing authentication
+	how are you providing autharization
+cache
+
+message
+
+	
+Spring boot
+
+lambda
+
+S3
+
+
+any question to interviewer
+----------------
+specific project hair
+technology
+backed team and frontend team
+support - it customer facing with huge customer or internal app
+requirment flow
+team hirachy
+architects
+
+
+design patterns
+	buider/singleton/factory/prototype
+	adapter/proxy/facade
+core java
+	oops- abstraction/encapsulation/inheritance/polymoriphisim
+	string contanct pool 1. new string 2. string litteral
+	string v buffer v builder
+	abstarct vs interface
+	interface default methods
+	interface static methods
+	interface functinal interface /examples
+	euqals and hash code
+	comparator v comparable
+	
+	
+	iterator v enumarator
+        for (String elem : list) {
+            if (elem.equals("a")) {
+                list.remove(elem);
+            }
+        }	
+		above code throws expection. Since the enhanced for loop uses an Iterator internally to traverse elements in a Collection, 
+		running the above code causes a ConcurrentModificationException since the remove() method of the Collection is used instead of the iterator
+	Maps
+		ConcurrentHashMap, HashMap, Hashtable, LinkedHashMap, TreeMap
+		see code of haspmap, hash table, concurrent hash map get, put, interrator
+	hash map, concurrent hash map
+	stream v parllel stream
+	flat map
+	optional
+	marker interfaces -examples
+	functional interfaces- examples
+	
+	thread v runnable
+	
+RDMS
+	what kind of caching techniques are you using
+	transaction isolation levels
+
+
+----------------------------------------------------------------------------------
+javascript
+database
+core java
+Spring
+
+how can we create thread safe object
+how to compare two userdefine objects
+
+have you ever worked on threading concepts
+give us one use case on threading
+
+what kind of spring modules you used
+
+
+
+
+NoSql
+	how are you hadling joins?
+	how can we connect multiple databases
+
+Security
+	how are you providing authentication
+	how are you providing autharization
+cache
+
+message
+
+	
+Spring boot
+
+lambda
+
+S3
+
+nodejs
+	
+	
