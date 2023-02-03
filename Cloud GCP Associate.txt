@@ -101,9 +101,11 @@ v48:cooling period- how long to wait to check autoscalling metrics again
 	stateless MIG-
 	stateful MIG- with data base persistance
 v58:http/tcp/udp loadbalancing
-v66:iaas- infrastructure, we only get system and network like VM, EC2
+--------------section 8 Managed service
+v67: NA
+v68: 1.iaas- infrastructure, we only get system and network like VM, EC2
 	we are responsible code, runtime, load balancer, auto scale
-	paas- platform, app engine- all features othen than code and configuration
+     2.paas- platform, elastic bean stock, app engine- all features othen than code and configuration
 	i.caas -continer as service comes under paas- kubernetes aws:eks, gcp:gke
 	ii.fass - funtcion as service comes under paas
 	iii. data bases
