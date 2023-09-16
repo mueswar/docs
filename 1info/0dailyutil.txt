@@ -1,3 +1,5 @@
+netstat -ano | findstr 8080
+taskkill /F /pid 6684
 
 "pattern": "[\\w\\s\\-#:;'\\/,.$]*"
 
@@ -7,7 +9,7 @@ org.apache.commons.lang3.StringUtils.equalsAnyIgnoreCase("COnstant",varValue)
 
 Check null pointer
 --------------------
-
+can we use Objects::nonNull  for string
 
 Java.utils
 Objects::nonNull - true if nonNull
@@ -21,6 +23,12 @@ collection
 List<String> l = new ArrayList();
 List<String> l = Lists.newArrayList();com.google.common.collect //mutable
 List<String> l = Lists.newArrayList(Obj);or.assertj.core.util.Lists //mutable
+
+List<String> list = Arrays.asList(new String[]{"foo", "bar"}); //list from array
+List<String> list = Arrays.asList("foo", "bar"); //list from fixed objects
+List<String> list = List.of("foo", "bar", "baz");//list from list interface java9
+Set<String> set = Set.of("foo", "bar", "baz");//Set from Set interface java9
+
 immutable
 	Collections.unmodifiableList(list);
 	List.of(list.toArray(new String[]{}));//java 9
