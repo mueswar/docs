@@ -170,3 +170,20 @@ how to create list from existing array
 how to create list from fixed values
 what is difference between filter and map 
 how to convert one list of objects into other data type list objects
+how to convert one list of objects into other data type list objects and print
+iterate array
+iterate list
+iterate set
+iterate map
+create enum  and print single value
+compare enum constant with Sting value
+create Comparator for userdefined class, and sort collection
+replace white space without replace method "abcd   xyz"
+java 11 date for date and time
+localdate,localtime
+
+
+design patterns
+-------------------------------------------------------
+singleton
+factory method

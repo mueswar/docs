@@ -5,7 +5,7 @@ from Spring 5.0 we need java8
 we can define any util calss as Component to autowaire in another class
 java beans should not be as final class to work as spring beans
 
-
+The default scope is singleton, but you can override this with the @Scope annotation
 
 Core Container
 ---------------------------------------------------

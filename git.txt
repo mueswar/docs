@@ -23,11 +23,30 @@ git push origin Branchname1
 maven
 ----------------------------------------
 cd C:\two\eclipsework\Bit\one-vehicle-association-legacy
+mvn clean package install
 mvn -U clean spring-boot:run
 mvn -U clean spring-boot:run -Dhibernate.show_sql=true -Dspring.profiles.active=dev,local -P dev-vault
 mvn -U clean spring-boot:run -Dspring.profiles.active=dev,local -P dev-vault >c:\2work\one.txt
 mvn -U clean spring-boot:run -Daws_profile=sso-nonprod -Daws_access_key_id=ASIA3NILJ2 -Daws_secret_access_key=hSm59zsUm/1O1Vn0hU26W0ezWvPAS
 mvn -U clean spring-boot:run -Dcloud.aws.region.static=us-east-1 -Dcloud.aws.credentials.useDefaultAwsCredentialsChain=true
+
+
+password change
+--------------------------
+control panel> Credential Manager>git:http//
+
+for config
+-------------------------------
+git clone http://bitbucket.us.ABC.com/scm/digital/CompanyOne.advisor.reference-api.git
+enter password
+
+git config --global user.email "user1@CompanyOne.com" 
+
+cd C:\2work/config/CompanyOne.platform.config
+
+checkout with tag 
+------------------------------
+git checkout tags/v1.01.245.1 -b tagv1.01.245.1branch
 
 local files override
 ------------------
@@ -35,6 +54,13 @@ git status
 git checkout feature/api-additiogit file1 -- to override one file changes in local
 src/main/resources/application.properties
 git reset --hard branch1 (to override total branch)
+
+update local - stash
+-------------------------
+git stash list
+git stash
+git pull (git pull --rebase)
+git stash apply
 
 Cherry pick
 ---------------------------
@@ -65,6 +91,11 @@ git checkout master
 git pull
 git checkout <your branch>
 git merge master
+
+if there is any conflicts resolve and run below commands
+git add *.*
+git commit -m "merge conflits resolved"
+git push
 
 create new branch in remote from local
 ------------------------------------------
@@ -132,13 +163,15 @@ mvn -U clean spring-boot:run
 >git pull <remote repository> <branchX>
 >git push <remote repository> <branchX>
 
->git branch  lists all branches
->git branch bone creates bone branch in locally from branchx
->git checkout bone it switches to bone branch
->git add -A
->git commit -m "reason to commit"
+>git branch        {lists all branches}
+>git branch -a     {it list all remote and local branches}
+>git branch bone   {creates bone branch in locally from current branch}
 >git push -u <remote repository> bone {it creates bone in remote pushes all local files to remote}
->git branch -a {it list all remote and local branches}
+
+>git branch -d bone {bone will be deleted locally}
+>git push <remote repository> -- delete bone {bone will be deleted from remote}
+
+
 
 to commit changes frome bone to master
 >git checkout master {switches to master}
@@ -146,10 +179,6 @@ to commit changes frome bone to master
 >git branch --mereged
 >git merge bone
 >git push <remote repository> master
-
->git branch -d bone {bone will be deleted locally}
->>git push <remote repository> -- delete bone {bone will be deleted from remote}
-
 
 
 
