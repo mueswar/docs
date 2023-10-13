@@ -64,6 +64,10 @@ password will be saved in control panel> user accounts
 
 install Mongo DB
 --------------------------------------------------------------------------------------------------------------------------------------
+7.0.1
+	https://www.mongodb.com/try/download/community
+	
+to test connection we need compass/mongo shell
 
 install Mongo Comppass
 --------------------------------------------------------------------------------------------------------------------------------------

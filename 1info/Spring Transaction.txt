@@ -3,35 +3,35 @@
 ########################################################
 Spring declarative transaction management addresses these concerns by using Aspect Oriented Programming to achieve loose coupling and avoid boiler-plate code in our application.
 Spring 3.1 introduces the @EnableTransactionManagement annotation to be used in on @Configuration classes and enable transactional support.
-@Configuration
-@EnableTransactionManagement
-public class PersistenceJPAConfig{
- 
-   @Bean
-   public LocalContainerEntityManagerFactoryBean  entityManagerFactoryBean(){
-      //...
-   }
- 
-   @Bean
-   public PlatformTransactionManager transactionManager(){
-      JpaTransactionManager transactionManager = new JpaTransactionManager();
-      transactionManager.setEntityManagerFactory( entityManagerFactoryBean().getObject() );
-      return transactionManager;
-   }
-}
+	@Configuration
+	@EnableTransactionManagement
+	public class PersistenceJPAConfig{
+	 
+	   @Bean
+	   public LocalContainerEntityManagerFactoryBean  entityManagerFactoryBean(){
+		  //...
+	   }
+	 
+	   @Bean
+	   public PlatformTransactionManager transactionManager(){
+		  JpaTransactionManager transactionManager = new JpaTransactionManager();
+		  transactionManager.setEntityManagerFactory( entityManagerFactoryBean().getObject() );
+		  return transactionManager;
+	   }
+	}
 only public methods should be annotated with @Transactional
-@Transactional
-public void businessLogic() {
-... use entity manager inside a transaction ...
-}
+	@Transactional
+	public void businessLogic() {
+	... use entity manager inside a transaction ...
+	}
 You can change transaction isolation level – as follows
-@Transactional(isolation = Isolation.SERIALIZABLE)
-Note that this has actually been introduced in Spring 4.1
-Isolation.READ_COMMITTED is default isolation level, so it only prevents dirty reads.
-READ_UNCOMMITTED
-READ_COMMITTED prevents Dirty Reads
-REPEATABLE_READ prevents Dirty Reads and Non-Repeatable Reads
-SERIALIZABLE prevents Dirty Reads, Non-Repeatable Reads and Phantom Read
+	@Transactional(isolation = Isolation.SERIALIZABLE)
+	Note that this has actually been introduced in Spring 4.1
+	Isolation.READ_COMMITTED is default isolation level, so it only prevents dirty reads.
+	READ_UNCOMMITTED
+	READ_COMMITTED prevents Dirty Reads
+	REPEATABLE_READ prevents Dirty Reads and Non-Repeatable Reads
+	SERIALIZABLE prevents Dirty Reads, Non-Repeatable Reads and Phantom Read
 
 Dirty Reads
 -----------------

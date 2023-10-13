@@ -1,3 +1,16 @@
+install
+at --C:\userinstall\mongodb
+but actually create DB in    : C:\Program Files\MongoDB 
+compass in                   : C:\Users\Arha\AppData\Local\MongoDBCompass
+
+we need compass/mongo shell to connect DB
+host - localhost:27017
+
+
+
+--------------------------------
+
+
 
 No schemas
 does not support Joins
@@ -6,8 +19,8 @@ not good for ACID transactions(Atomicity consistency isolation durability)
 database>collection>document
 create databases
 
-show dbs;//list all databases who have ateast one document
-db;//displays current database
+show dbs;    //list all databases who have ateast one document
+db;          //displays current database
 show collections;
 use test1;//creates database or switches to database if it is there
 

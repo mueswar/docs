@@ -1,3 +1,23 @@
+install
+mySql 8.0.33
+ it installs sever, client, router, workbench, connectors
+ server port: 3306,   x-protocal port: 33060
+ password: see in C:\1E\1Book\java\passwords.txt
+ user: root
+ 
+workbench
+
+MySQL Shell
+      C:\Program Files\MySQL\MySQL Shell 8.0\bin\mysqlsh.exe
+	  to connect run  \connect root@localhost:3306
+	  give password
+	  
+	  database =schema in tomcat
+
+Test data
+	see below
+-------------------------------------
+
 Database interview questions
 
 What is difference between where and having clause
@@ -156,6 +176,12 @@ id,name, location2
 how to fetch data from table which does not have primarey key in hibernate
 
 how to get manager heirarchy using CTEs
+
+
+
+Test data
+-------------------------------------------------------------------------
+CREATE TABLE `sche_1`.`tb_1` ( `name` VARCHAR(10) NOT NULL, `id` INT NOT NULL,  PRIMARY KEY (`id`));
 
 
 
