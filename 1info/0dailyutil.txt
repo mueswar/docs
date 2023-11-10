@@ -14,8 +14,9 @@ can we use Objects::nonNull  for string
 Java.utils
 Objects::nonNull - true if nonNull
 
-spring framework StringUtil.isEmpty -  
-spring framework CollectionUtils.isEmpty - true if null or empty
+spring framework 
+	StringUtil.isEmpty -  
+	CollectionUtils.isEmpty - true if null or empty
 
 
 collection

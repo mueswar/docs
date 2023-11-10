@@ -123,4 +123,14 @@ S3
 
 nodejs
 	
-	
+---------------------------------------------
+Faced interview questions
+1. write producer, consumer code if que is full producer has to wait, if empty consumer has to wait
+2. LinkedHashMap internal logic to maintain order
+3.dates
+
+
+
+Angular
+what is service
+How to access service

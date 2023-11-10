@@ -90,85 +90,85 @@ public class EmployeeDao {
 }
 
 //JDBC templete with prepared statement
-public Boolean saveEmployeeByPreparedStatement(final Employee e){  
-    String query="insert into employee values(?,?,?)";  
-    return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
-    @Override  
-    public Boolean doInPreparedStatement(PreparedStatement ps)  
-            throws SQLException, DataAccessException {  
-        ps.setInt(1,e.getId());  
-        ps.setString(2,e.getName());  
-        ps.setFloat(3,e.getSalary());  
-        return ps.execute();  
-    }  
-    });  
-}  
-
-//JDBC templete with resultSet
-public List<Employee> getAllEmployees(){  
-	return jdbcTemplate.query("select * from employee",new ResultSetExtractor<List<Employee>>(){  
+	public Boolean saveEmployeeByPreparedStatement(final Employee e){  
+		String query="insert into employee values(?,?,?)";  
+		return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
 		@Override  
-		public List<Employee> extractData(ResultSet rs) throws SQLException,  
-				DataAccessException {  
-        List<Employee> list=new ArrayList<Employee>();  
-		while(rs.next()){  
-			Employee e=new Employee();  
-			e.setId(rs.getInt(1));  
-			e.setName(rs.getString(2));  
-			e.setSalary(rs.getInt(3));  
-			list.add(e);  
-			}  
-			return list;  
-        }  
-    });  
- } 
- 
- //JDBC templete with rowmapper
- public T mapRow(ResultSet rs, int rowNumber)throws SQLException  
- 
-public List<Employee> getAllEmployeesRowMapper(){  
-	return jdbcTemplate.query("select * from employee",new RowMapper<Employee>(){  
-		@Override  
-		public Employee mapRow(ResultSet rs, int rownumber) throws SQLException {  
-			Employee e=new Employee();  
-			e.setId(rs.getInt(1));  
-			e.setName(rs.getString(2));  
-			e.setSalary(rs.getInt(3));  
-			return e;  
+		public Boolean doInPreparedStatement(PreparedStatement ps)  
+				throws SQLException, DataAccessException {  
+			ps.setInt(1,e.getId());  
+			ps.setString(2,e.getName());  
+			ps.setFloat(3,e.getSalary());  
+			return ps.execute();  
 		}  
 		});  
-}
+	}  
+
+//JDBC templete with resultSet
+	public List<Employee> getAllEmployees(){  
+		return jdbcTemplate.query("select * from employee",new ResultSetExtractor<List<Employee>>(){  
+			@Override  
+			public List<Employee> extractData(ResultSet rs) throws SQLException,  
+					DataAccessException {  
+			List<Employee> list=new ArrayList<Employee>();  
+			while(rs.next()){  
+				Employee e=new Employee();  
+				e.setId(rs.getInt(1));  
+				e.setName(rs.getString(2));  
+				e.setSalary(rs.getInt(3));  
+				list.add(e);  
+				}  
+				return list;  
+			}  
+		});  
+	 } 
+ 
+//JDBC templete with rowmapper
+	public T mapRow(ResultSet rs, int rowNumber)throws SQLException  
+	 
+	public List<Employee> getAllEmployeesRowMapper(){  
+		return jdbcTemplate.query("select * from employee",new RowMapper<Employee>(){  
+			@Override  
+			public Employee mapRow(ResultSet rs, int rownumber) throws SQLException {  
+				Employee e=new Employee();  
+				e.setId(rs.getInt(1));  
+				e.setName(rs.getString(2));  
+				e.setSalary(rs.getInt(3));  
+				return e;  
+			}  
+			});  
+	}
 
 //NamedParameterJdbcTemplate
-pubic T execute(String sql,Map map,PreparedStatementCallback psc)  
-<bean id="jtemplate"   
-	class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">  
-	<constructor-arg ref="ds"></constructor-arg>  
-</bean>
-public  void save (Emp e){  
-	String query="insert into employee values (:id,:name,:salary)";  
-	Map<String,Object> map=new HashMap<String,Object>();  
-	map.put("id",e.getId());  
-	map.put("name",e.getName());  
-	map.put("salary",e.getSalary());  
-	template.execute(query,map,new PreparedStatementCallback() {  
-		@Override  
-		public Object doInPreparedStatement(PreparedStatement ps)  
-				throws SQLException, DataAccessException {  
-			return ps.executeUpdate();  
-		}  
-	});  
-}  
+	pubic T execute(String sql,Map map,PreparedStatementCallback psc)  
+	<bean id="jtemplate"   
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">  
+		<constructor-arg ref="ds"></constructor-arg>  
+	</bean>
+	public  void save (Emp e){  
+		String query="insert into employee values (:id,:name,:salary)";  
+		Map<String,Object> map=new HashMap<String,Object>();  
+		map.put("id",e.getId());  
+		map.put("name",e.getName());  
+		map.put("salary",e.getSalary());  
+		template.execute(query,map,new PreparedStatementCallback() {  
+			@Override  
+			public Object doInPreparedStatement(PreparedStatement ps)  
+					throws SQLException, DataAccessException {  
+				return ps.executeUpdate();  
+			}  
+		});  
+	}  
 
 //SimpleJdbcTemplate
-int update(String sql,Object... parameters)  
-<bean id="jtemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">  
-	<constructor-arg ref="ds"></constructor-arg>  
-</bean> 
-public int update (Emp e){  
-	String query="update employee set name=? where id=?";  
-	return template.update(query,e.getName(),e.getId());  
-}
+	int update(String sql,Object... parameters)  
+	<bean id="jtemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">  
+		<constructor-arg ref="ds"></constructor-arg>  
+	</bean> 
+	public int update (Emp e){  
+		String query="update employee set name=? where id=?";  
+		return template.update(query,e.getName(),e.getId());  
+	}
 
 How to use Repositories
 @Configuration 
@@ -302,58 +302,5 @@ public class HibernateEmpRepository{
 	}
 	private Session currentSession() {
 		return sessionFactory.getCurrentSession();
-	}
-}
-
-//spring JPA
-LocalEntityManagerFactoryBean produces an application-managed EntityManagerFactory.
-LocalContainerEntityManagerFactoryBean produces a container-managed EntityManagerFactory.
-persistence.xml(This file must appear inthe META-INF directory in the classpath)
-<persistence-unit name="spitterPU">
-</persistence-unit>
-@Bean
-public LocalEntityManagerFactoryBean entityManagerFactoryBean() {
-	LocalEntityManagerFactoryBean emfb = new LocalEntityManagerFactoryBean();
-	emfb.setPersistenceUnitName("spitterPU");
-	return emfb;
-}
-CONFIGURING CONTAINER-MANAGED JPA
-@Bean
-public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-	DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
-	LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
-	emfb.setDataSource(dataSource);
-	emfb.setJpaVendorAdapter(jpaVendorAdapter);
-	emfb.setPackagesToScan("com.habuma.spittr.domain");
-	return emfb;
-}
-@Bean
-public JpaVendorAdapter jpaVendorAdapter() {
-	HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();//different classes based on JPA implimentaion
-	//OpenJpaVendorAdapter adapter = new OpenJpaVendorAdapter()
-	adapter.setDatabase("HSQL");//ORACLE for Oracle and DB2 for DB2
-	adapter.setShowSql(true);
-	adapter.setGenerateDdl(false);
-	adapter.setDatabasePlatform("org.hibernate.dialect.HSQLDialect");
-	return adapter;
-}
-//ENTITYMANAGERFACTORY FROM JNDI
-@Bean
-public JndiObjectFactoryBean entityManagerFactory() {}
-	JndiObjectFactoryBean jndiObjectFB = new JndiObjectFactoryBean();
-	jndiObjectFB.setJndiName("jdbc/SpittrDS");
-	return jndiObjectFB;
-}
-//Spring-free JPA repositories(without JpaTemplete)
-@Repository
-@Transactional
-public class JpaSpitterRepository implements SpitterRepository {
-	@PersistenceUnit
-	private EntityManagerFactory emf;
-	public void addSpitter(Spitter spitter) {
-		emf.createEntityManager().persist(spitter);
-	}
-	public Spitter getSpitterById(long id) {
-		return emf.createEntityManager().find(Spitter.class, id);
 	}
 }
