@@ -564,18 +564,6 @@ what is route parameter
 		this._empService.getEmpById(id).subcribe(.....);
 
 
-Codevaluation 
-Forms 
-------------------------
-
-
-
-
-
-Car Comp
-------------------------------
-Angular Material 7
-	mat-card-content 
 
 
 
