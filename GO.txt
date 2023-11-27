@@ -12,7 +12,7 @@ function defination
 
 Tools
 ---------
-1.we can programmes on golang.org itself
+1.we can do programmes on golang.org itself
 2.VS code with go plugin(GO should be installed)
 
 single line comments
