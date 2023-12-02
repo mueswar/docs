@@ -1,42 +1,5 @@
 Last 3 hours review
 
-javascript
-database
-core java
-Spring
-
-how can we create thread safe object
-how to compare two userdefine objects
-
-have you ever worked on threading concepts
-give us one use case on threading
-
-what kind of spring modules you used
-
-
-RDMS
-	what kind of caching techniques are you using
-	transaction isolation levels
-
-NoSql
-	how are you hadling joins?
-	how can we connect multiple databases
-
-Security
-	how are you providing authentication
-	how are you providing autharization
-cache
-
-message
-
-	
-Spring boot
-
-lambda
-
-S3
-
-
 any question to interviewer
 ----------------
 specific project hair
@@ -88,59 +51,17 @@ RDMS
 	transaction isolation levels
 
 
-----------------------------------------------------------------------------------
-javascript
-database
-core java
-Spring
-
-how can we create thread safe object
-how to compare two userdefine objects
-
-have you ever worked on threading concepts
-give us one use case on threading
-
-what kind of spring modules you used
-
-
-
-
-NoSql
-	how are you hadling joins?
-	how can we connect multiple databases
-
-Security
-	how are you providing authentication
-	how are you providing autharization
-cache
-
-message
-
-	
-Spring boot
-
-lambda
-
-S3
-
-nodejs
-	
----------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 Faced interview questions
 1. write producer, consumer code if que is full producer has to wait, if empty consumer has to wait
 2. LinkedHashMap internal logic to maintain order
-3.dates
+3. dates
 
 
 
 Angular
 what is service
 How to access service
-
-
-
-
-
 
 
 
@@ -153,6 +74,7 @@ How to access service
 4. spring-boot-actuator
 5. what is diff b/w propagation and isolation
 6. ACID properies
+7. POST vs PUT
 
 
 
@@ -215,7 +137,11 @@ Srping answers
 	it gives production ready features like healt, metrics
 	actuator provides dependency managment and auto-configuration for Micrometer Tracing.
 	Spring boot ships acuto-configuration for Zipkin tracer
-
+5
+6
+7. The difference between POST and PUT is that PUT requests are idempotent. That is, calling the same PUT request multiple times will 	
+	always produce the same result. In contrast, calling a POST request repeatedly have side effects of creating the same resource
+	multiple times.
 
 
 
@@ -227,11 +153,19 @@ Srping answers
 Finctional interface
 	Funtional interface can have only one abstract method but many default methods and static methods.
 	Lambda expressions can be used to represent the instance of a functional interface. Before Java 8, we had to create anonymous inner class objects or implement these interfaces.
-
+Functional programming
+	Improved Code Reusability and Modularity
+		By following a declarative style, functional programming allows developers to focus on what needs to be done rather than how it should be done. 
+		Complex logic can be broken down into small, reusable functions with functional programming, making it easier to test and debug.
+	Better Scalability and Performance Optimization
+		functional programming enables the composition of functions, where the output of one function becomes the input of another. This composability further enhances code modularity, making reasoning about and maintaining complex software systems easier.
+	Reduced Complexity and Improved Debugging
+		the immutability of data ensures that functions can be safely executed in parallel without the need for complex synchronization mechanisms.
+		functional programming encourages the use of lazy evaluation, where computations are only performed when their results are actually needed.
 callable
 	Java 5 introduced java.util.concurrent.Callable interface in concurrency package that is similar to Runnable interface but it can return any Object and able to throw Exception.
 	Callable interface has call method
-	We can exicute callable with ExecutorService.submit, submit mit returns Future.
+	We can exicute callable with ExecutorService.submit, submit returns Future.
 	when we submit main thread does not get blocked , main thread continue to exicute state ments after submit method 
 	we have Feature.get method to get callable return object.
 	When we call Feature.get method main thread gets blocked until callable completes task and returns value
@@ -254,8 +188,49 @@ Exicutors
 	We also have Executors class
 	ExecutorService executorService = Executors.newFixedThreadPool(10);
 CompleatableFeature vs Feature
-	CompletableFuture(V8) is non blocking
+	CompletableFuture(java 8) is non blocking
 		it is easy to combile multiple async calls
 		thenApply(), thenAccept(), join(), thenCompose(), thenCombine(), and allOf()
-	Feature(V5) is blocking feature
+	Feature(java 5) is blocking feature
 		get() -it blocks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11/28
+-------------------------------
+remove duplicates in string
+post vs put difference
+202, 403 status codes
+AWS EKS
+node.js event loops
+@contoller vs @restcontoller
+circular dependency with constructor injection
+@service vs @component

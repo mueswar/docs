@@ -151,12 +151,15 @@ common configuration for second level and query
 	your-cache-config.xml will have cache regions settings
 Difference between get() vs load() 
 	load() will throw an exception if an object with id passed to them is not found
-	get will not return null
+	get will not throw an exception and return null
 	load can return proxy without hitting the database
 	get always hits database
 difference between save() and saveOrUpdate()
 
 merge() and update()
+	Update: if you are sure that the session does not contains an already persistent instance with the same identifier,then use update to save the data in hibernate
+
+	Merge: if you want to save your modifications at any time with out knowing about the state of an session, then use merge() in hibernate.
 
 What different fetching strategies are of hibernate?
 	it is used to optimize the Hibernate generated select statement.
@@ -216,54 +219,57 @@ with three classes will get plicy numbers based on product
 Sone.java
 Done.java
 Emp.java
-package com.example.demo1;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-@RestController
-public class Sone {
-	@Autowired
-	private Done d;
-	@RequestMapping(method=RequestMethod.GET, value="/hello1/{id}")
-	public List<Emp> mone1(@PathVariable("id") String s) {
-		return d.findByName(s);
+Sone.java
+	package com.example.demo1;
+	import java.util.List;
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.web.bind.annotation.PathVariable;
+	import org.springframework.web.bind.annotation.RequestMapping;
+	import org.springframework.web.bind.annotation.RequestMethod;
+	import org.springframework.web.bind.annotation.RestController;
+	@RestController
+	public class Sone {
+		@Autowired
+		private Done d;
+		@RequestMapping(method=RequestMethod.GET, value="/hello1/{id}")
+		public List<Emp> mone1(@PathVariable("id") String s) {
+			return d.findByName(s);
+		}
 	}
-}
-package com.example.demo1;
-import java.util.List;
-import org.springframework.data.repository.CrudRepository;
-public interface Done extends CrudRepository<Emp, Long>{
-	List<Emp> findByName(String name);
-}
-package com.example.demo1;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-@Entity
-@Table(name="plcy_cov", schema="AFP_POLL")
-public class Emp {
-	@Id
-	@Column(name = "PLCY_NBR")
-	private String id;
-	@Column(name = "PRDT_CD")
-	private String name;
-	public String getId() {
-		return id;
+Done.java
+	package com.example.demo1;
+	import java.util.List;
+	import org.springframework.data.repository.CrudRepository;
+	public interface Done extends CrudRepository<Emp, Long>{
+		List<Emp> findByName(String name);
 	}
-	public void setId(String id) {
-		this.id = id;
+Emp.java
+	package com.example.demo1;
+	import javax.persistence.Column;
+	import javax.persistence.Entity;
+	import javax.persistence.Id;
+	import javax.persistence.Table;
+	@Entity
+	@Table(name="plcy_cov", schema="AFP_POLL")
+	public class Emp {
+		@Id
+		@Column(name = "PLCY_NBR")
+		private String id;
+		@Column(name = "PRDT_CD")
+		private String name;
+		public String getId() {
+			return id;
+		}
+		public void setId(String id) {
+			this.id = id;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-}
 -------------------------end of poc-------------------------
 
 
