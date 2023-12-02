@@ -1,4 +1,5 @@
 Functional programming  :  https://medium.com/tag/functional-programming/recommended
+java code samples for code test: https://www.geeksforgeeks.org/find-indices-of-all-occurrence-of-one-string-in-other/?ref=roadmap
 
 https://medium.com/@berkayhaberal
 https://medium.com/@RamLakshmanan

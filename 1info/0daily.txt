@@ -4,4 +4,4 @@ see core methods
 poc1: convert gradle to maven or maven to gradel actual project
 
 Must learn: Angular, Node, react, kubernetes
-Learn2: GO
+Learn2: python

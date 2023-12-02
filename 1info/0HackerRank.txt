@@ -47,7 +47,7 @@ s.subString(0,1);
 s.split(","); returns String[] a 
 s.isEmpty();
 s.isBlank()//from java 11
-s.concat("abc")//
+s.concat("abc")// we need to assign it, else we loose change
 String.valueOf()//convert any data type into String
 
 Wrapper
@@ -181,9 +181,3 @@ create Comparator for userdefined class, and sort collection
 replace white space without replace method "abcd   xyz"
 java 11 date for date and time
 localdate,localtime
-
-
-design patterns
--------------------------------------------------------
-singleton
-factory method
