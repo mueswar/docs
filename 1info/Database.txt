@@ -99,7 +99,7 @@ Primary and Unique key uniquely identifies each row in table but there are some 
 What is Difference between Truncate and Delete command in SQL?
 	1.truncate is fast delete is slow.
 	2.truncate doesn’t do logging delete logs on per row basis.
-	3.rollback is possible with delete not with truncate until specifically supported by the vendor.
+	3.rollback is possible with delete, not with truncate until specifically supported by the vendor.
 	4.truncate doesn’t fire trigger, delete does.
 	5.Don’t delete, truncate it when it comes to purge tables.
 	6.truncate reset identity column in table if any, delete doesn’t.
@@ -115,8 +115,13 @@ What is difference between UNION vs UNION ALL in SQL?
 Is it possible for a table to have more than one foreign key? 
 	Yes, a table can have many foreign keys and only one primary key.
 What is the difference between Having clause and Where clause?
-	Both specify a search condition but Having clause is used only with the SELECT statement and typically used with GROUP BY clause.
-	If GROUP BY clause is not used then Having behaved like WHERE clause only.
+	WHERE Clause can be used without GROUP BY Clause , but Having not
+	WHERE Clause can be used with SELECT, UPDATE, DELETE statement
+	HAVING Clause can only be used with SELECT statement.
+	WHERE Clause is used to filter the records from the table based on the specified condition.
+	HAVING Clause is used to filter record from the groups based on the specified condition.
+	WHERE Clause is used with single row function like UPPER, LOWER etc.
+	HAVING Clause is used with multiple row function like SUM, COUNT etc.
 *************************************************
 ****   kudvenkat   ******************************
 *************************************************

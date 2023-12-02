@@ -124,14 +124,14 @@ constructor(){
 }
 
 How to get any attribute value in component(we can use @input)
-if we have like <app-emp name="emp1"></app-emp> then 
-in component class
-@Input("name")username:string;
-user:string;
-ngOnInit(){
-	this.user=this.username;
-}
-but you can not do it in constructor. constructor is exicuted when instance is created but vallues will be after object instation.
+	if we have like <app-emp name="emp1"></app-emp> then 
+	in component class
+	@Input("name")username:string;
+	user:string;
+	ngOnInit(){
+		this.user=this.username;
+	}
+	but you can not do it in constructor. constructor is exicuted when instance is created but vallues will be after object instation.
 
 
 How to pass object(Emp) to component

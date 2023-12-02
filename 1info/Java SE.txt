@@ -722,8 +722,11 @@ java.util.stream.Collectors get additional methods to collect a Stream into unmo
 ##################################################
 ######          JAVA 11 features              ####
 ##################################################
-
-
+TextBlocks
+	we can place our text in between the triple quotes and have multiple double quoted strings inside it without having to use escape characters
+	we can use \s to add space and \ to remove new line
+Record types
+sealed classes
 
 ##################################################
              FAQ with answers
@@ -866,7 +869,7 @@ The class itself must implements the java.lang.Comparable interface to compare i
 Consider a Movie class that has members like, rating, name, year. Suppose we wish to sort a list of Movies based on year of release.
 We can implement the Comparable interface with the Movie class, and we override the method compareTo() of Comparable interface.
 Now, suppose we want sort movies by their rating and names also. we can not do it because with comparable, we get only one chance to implement the compareTo() method.
-Unlike Comparable, Comparator is external to the element type we are comparing. It�s a separate class.
+Unlike Comparable, Comparator is external to the element type we are comparing. It's a separate class.
 We create multiple separate classes (that implement Comparator) to compare by different members.
 
 method local variables are thread safe

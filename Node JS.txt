@@ -1,59 +1,59 @@
+https://www.youtube.com/watch?v=ce90lLhDI_Y&list=PLC3y8-rFHvwh8shCMHFA5kWxD9PaPwxaY&index=12
+npmorg.com
+
 How nodeJs application is powerfull even it is single thready appliaction
-	it is poerfull because of it is  asyncronous calls and callbacks
+	it is powerfull because of it's asyncronous calls and callbacks
 	So need to understand howmany max threads can be ron for jave microservice and 
 	how single thread asyc call can handle the toomany calls
 NodeJs is not good for CPU intensive tasks, So what is CPU intensive task?
 	CPU task is generally computatinal logic(math functions like shorting bulk data)
 	
 realtime async usecases
+	to make multiple backed calls and combine outputs, it is latency issue.
+	
+Index
+	local module- commanJS
+	local module- ES -Node.js 14
+	Built-in module {path, events, fs, stream, http}
+	
 
 
 use cases
 ---------------------------------------------------------------------------------------------------
-
 fs module
 	read file sync/async/chunk
 	write file
 	check if exist
 	create folder and delete it
-
-
 fetch data from database
-
 call webservice
-
 loging 
-
 properties
-	
 	cloud config properties
-	
 	AWS SSM parameters
-	
 	
 	
 run with commandline
 ---------------------------------------------------------------------------------------------------
-install nodeJs
-create javascript file one.js in c:\project1
-to run it open commandline and run below command 
-c:\project1>node one
-
+	install nodeJs
+	create javascript file one.js in c:\project1
+	to run it open commandline and run below command 
+	c:\project1>node one
 Run Heloowrld program  with VS
 ---------------------------------------------------------------------------------------------------
-install Node
-check node
->node -v
-create project folder node1
-open visual studio code 
-c:>node1>code .
-crate Test.js file
-create function in it and call it
-	function mone(){ console.log("Hello world");}
-	mone();
-open terminal and run it in VS code
-	open terminal
-	c:\node1>node Test
+	install Node
+	check node
+	>node -v
+	create project folder node1
+	open visual studio code 
+	c:>node1>code .
+	crate Test.js file
+	create function in it and call it
+		function mone(){ console.log("Hello world");}
+		mone();
+	open terminal and run it in VS code
+		open terminal
+		c:\node1>node Test
 
 Hapi farmework
 ---------------------------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ mongoose
 define variables
 
 //if one function mone takes another function mtwo as parameter
-while calling function mone we have to pass other function name without brackets
+	while calling function mone we have to pass other function name without brackets
 	like mone(mtwo) but not like mone(mtwo())
 //when you are assigning function difenation to variable we can not give function Name
 	vone = function (aone){console.log(aone);};
@@ -167,33 +167,31 @@ How can we expose multiple function of module
 	module.exports = {
 		vone: vone,
 		vtwo:vtwo
-	}
-//see syntax here like key pair but no quotes
+	}//see syntax here like key pair but no quotes
 
-what are node js code modules how we can import those
-enents, utils //no capital letters
-
-//what is EventEmitter, how do we get refernce to it, what methods do have in it
-on method is used to define funtion for perticuler event
-emit methos is used to trigger event and we can pass parameters to event function
-var events = require('events');
-var emone = new events.EventEmitter();
-emone.on('eventone',function(aone){console.log('Hi');});// here we defined function for eventone
-emone.emit('eventone', 'sone');
+what are node.js core/built-in modules how we can import those
+	enents, utils //no capital letters
+what is EventEmitter, how do we get refernce to it, what methods do have in it
+	on - method is used to define funtion for perticuler event
+	emit - methos is used to trigger event and we can pass parameters to event function
+	var events = require('events');
+	var emone = new events.EventEmitter();
+	emone.on('eventone',function(aone){console.log('Hi');});// here we defined function for eventone
+	emone.emit('eventone', 'sone');
 
 //what is inherits
-inherits is function util module, which can add one object funtions to another
-how can we inherit on function of the EventEmitter in custom object called function
-var events = require('events');
-var util = require('util');
-var Person = function(name){this.name=name;}
-util.inherits(Person, events.EventEmitter);
-var james = new Person('james');var mary = new Person('mary');var peter = new Person('peter');
-var people = [james,mary,peter];
-people.forEach(function(person){
-	person.on('speak', function(msg){console.log(person.name+'said:'+msg);});
-});
-james.emit('speak', 'hey dude');
+	inherits is function util module, which can add one object funtions to another
+	how can we inherit on function of the EventEmitter in custom object called function
+	var events = require('events');
+	var util = require('util');
+	var Person = function(name){this.name=name;}
+	util.inherits(Person, events.EventEmitter);
+	var james = new Person('james');var mary = new Person('mary');var peter = new Person('peter');
+	var people = [james,mary,peter];
+	people.forEach(function(person){
+		person.on('speak', function(msg){console.log(person.name+'said:'+msg);});
+	});
+	james.emit('speak', 'hey dude');
 
 Files
 ---------------------------------------------------------------------------------------------------
@@ -209,13 +207,13 @@ Files
 	console.log('test');
 	here test will be printed first and then file content will be printed.
 
-fs.readdFile('readMe.txt', 'utf8', function(err, data){
-	fs.writeFile('writeMe.txt',data);
-});
-
-fs.unlink('readme.txt');// removes file
-fs.mkdirSync('stuff');
-fs.rmdirSync('stuff');
+	fs.readdFile('readMe.txt', 'utf8', function(err, data){
+		fs.writeFile('writeMe.txt',data);
+	});
+//create, remove folder and file
+	fs.unlink('readme.txt');// removes file
+	fs.mkdirSync('stuff');
+	fs.rmdirSync('stuff');
 
 how to create dir aync and create file in it
 	fs.mkdir('stuff', function(){
@@ -251,10 +249,10 @@ rs.on('data',function(chunk){
 });
 
 what is pipe
-pipe help us to connecct read stream with write stream and we can avoid maually triggering functions code
-var rs = fs.createReadStream(__dirname+'/readMe.txt', 'utf8');
-var ws = fs.createWriteStream(__dirname+'/writeMe.txt');
-rs.pipe(ws);
+	pipe help us to connecct read stream with write stream and we can avoid maually triggering functions code
+	var rs = fs.createReadStream(__dirname+'/readMe.txt', 'utf8');
+	var ws = fs.createWriteStream(__dirname+'/writeMe.txt');
+	rs.pipe(ws);
 
 var server = http.createServer(function(req,res){
 	console.log('request was made:' +req.url);
@@ -288,43 +286,43 @@ node app.js// this can not track chnages
 nodemon app.js // this will track changes and restarts automatically
 
 // how to define routes with express
-var express = require('express');
-var app = express();
-app.get('/',function(req, res){
-	res.send('this is homepage');
-});
-app.get('/contact',function(req, res){
-	res.send('this is contactpage');// this res is response object of express which send method
-});
-app.listen(3000);
+	var express = require('express');
+	var app = express();
+	app.get('/',function(req, res){
+		res.send('this is homepage');
+	});
+	app.get('/contact',function(req, res){
+		res.send('this is contactpage');// this res is response object of express which send method
+	});
+	app.listen(3000);
 
 how to pass parameter values
-app.get('/profile/:id',function(req, res){
-	res.send('you requested profile:'+req.params.id);
-});
+	app.get('/profile/:id',function(req, res){
+		res.send('you requested profile:'+req.params.id);
+	});
 
 how to send html with express routes
-app.get('/contact',function(req, res){
-	res.sendFile(__dirname +'/contact.html');// for files we need to sendFile method
-});
+	app.get('/contact',function(req, res){
+		res.sendFile(__dirname +'/contact.html');// for files we need to sendFile method
+	});
 
 how to send array to view and how to display array in view
-npm install ejs --save
-create folder called view
-create file profile with .ejs extension
+	npm install ejs --save
+	create folder called view
+	create file profile with .ejs extension
 
-app.set('view engine', ejs); // we no need to import ejs
-app.get('/profile/:id',function(req, res){
-	var x ={age:29, job:'IT', hobbies:['singing','fishing']};
-	res.render('profile',{person:req.params.id, data:x}); //here we are using render method for daynamic view data
-});
-profile.ejs
-<%= person %> //embeding object property whoes value is string
-<%= data.age%> //embeding object property whoes value is object
-<%= data.job =%>
-<% data.hobbies.forEach(function(item){%> // iterate array wirh javaScript forEach function
-	<%= item %>
-<% ))%>
+	app.set('view engine', ejs); // we no need to import ejs
+	app.get('/profile/:id',function(req, res){
+		var x ={age:29, job:'IT', hobbies:['singing','fishing']};
+		res.render('profile',{person:req.params.id, data:x}); //here we are using render method for daynamic view data
+	});
+	profile.ejs
+	<%= person %> //embeding object property whoes value is string
+	<%= data.age%> //embeding object property whoes value is object
+	<%= data.job =%>
+	<% data.hobbies.forEach(function(item){%> // iterate array wirh javaScript forEach function
+		<%= item %>
+	<% ))%>
 
 How to partial templete in another file
 	partials/nav.ejs
@@ -373,10 +371,10 @@ how can we render view with query string
 <%= qs.dept%>//we can add this in ejs file
 
 How can we prepopulate form with query string
-<form id="profile1">
-	<input name="name" value="qs.person">
-	<input name="dept" value="qs.dept">
-</from>
+	<form id="profile1">
+		<input name="name" value="qs.person">
+		<input name="dept" value="qs.dept">
+	</from>
 
 how can we read dat from post request
 <form id="profile1" method="post" action="/profile">
