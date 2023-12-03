@@ -4,22 +4,22 @@ general web problems
 ------------------------
 html does not support custom attributes(Html5 supports data attributes)
 Javascript global scope issue(solve with encapsulation)
-Dependency injection
-var person = fuction(fname, lname){
-	this.fanme=fname;
-	this.lanme=lname;
-}
-fuction logPerson(){
-	var john= new person("fone","lone");
-	console.log(john);
-}
-logPerson();
+// without Dependency injection
+	var person = fuction(fname, lname){
+		this.fanme=fname;
+		this.lanme=lname;
+	}
+	fuction logPerson(){
+		var john= new person("fone","lone");
+		console.log(john);
+	}
+	logPerson();
 //with dependency injection (create fuction to accepect object and create object outside)
-fuction logPerson(person){
-	console.log(person);
-}
-var john= new person("fone","lone");
-logPerson(john);
+	fuction logPerson(person){
+		console.log(person);
+	}
+	var john= new person("fone","lone");
+	logPerson(john);
 
 benifits of AngularJs
 ---------------------
@@ -30,135 +30,42 @@ Another difference to note about using AngularJS instead of JSP is that we would
 
 history
 -----------------
-AngularJS 1 released in 2012.
-Angular 4 released in March 2017
-Angular 4 is almost the same as Angular 2. It has a backward compatibility with Angular 2.
-Angular 4 is updated to a recent version of TypeScript, which is 2.2. 
-Angular 2 uses TypeScript version 1.8.
-AngularJS is based on the model view controller, whereas Angular 2 is based on the components structure
+	AngularJS 1 released in 2012.
+	Angular 4 released in March 2017
+	Angular 4 is almost the same as Angular 2. It has a backward compatibility with Angular 2.
+	Angular 4 is updated to a recent version of TypeScript, which is 2.2. 
+	Angular 2 uses TypeScript version 1.8.
+	AngularJS is based on the model view controller, whereas Angular 2 is based on the components structure
 
 Angular 4 - Environment Setup
 -------------------------------------------
-Nodejs
-Npm
-Angular CLI
-IDE for writing your code
-Nodejs has to be greater than 4 and npm has to be greater than 3.
-Once nodejs is installed, npm will also get installed along with it.(https://nodejs.org/en/download/)
-node –v 
-npm –v
-c:\angular9>npm install –g @angular/cli@latest  // to install angular cli on your system.(create new folder)
-c:\angular9>ng -v
-c:\angular9>ng --version
-software will be installed  at C:\Users\2121313\AppData\Roaming\npm\node_modules\@angular\cli
-c:\angular9>ng new proj1 // name of the project
-c:\angular9>cd proj1
-c:\angular9\proj1>ng serve -o //command builds the application and starts the web server(port 4200).
-http://localhost:4200/
-ng serve --host 0.0.0.0 –port 4205 // to change port
-
-download  Visual Studio code IDE https://code.visualstudio.com/
-Ctrl+Shift+P
-tips:https://code.visualstudio.com/docs/getstarted/tips-and-tricks#vscode
-
-How to create new project when we have AngularCLI is already installed
----------------------------------------------------------------------------------
-create folder C:\codeAngular
-C:\codeAngular>ng new pone
-C:\codeAngular\pone>ng serve
-http://localhost:4200/
+	step1: install node.js
+		Nodejs
+		Npm
+		node –v 
+		npm –v
+	Step2: Angular CLI
+		c:\angular9>npm install –g @angular/cli@latest  // to install angular cli on your system.(create new folder)
+		c:\angular9>ng -v
+		c:\angular9>ng --version
+		software will be installed  at C:\Users\2121313\AppData\Roaming\npm\node_modules\@angular\cli
+		note: ng -v maynot work, but try ng new proj1
+		note2: for access issue, remove C:\Users\username\AppData\Roaming\npm\ng.ps1
+	Step3: create project
+		c:\angular9>ng new proj1 // name of the project
+		c:\angular9>cd proj1
+		c:\angular9\proj1>ng serve -o //command builds the application and starts the web server(port 4200).
+		http://localhost:4200/
+		ng serve --host 0.0.0.0 –port 4205 // to change port
+	VS code
+		download  Visual Studio code IDE https://code.visualstudio.com/
+		Ctrl+Shift+P
+		tips:https://code.visualstudio.com/docs/getstarted/tips-and-tricks#vscode
 
 
 
-
-
-
-
-how to convert employ record in employ component to link to display details
----------------------------------------------------------------------------
-1: add parameter router in app module
-	const appRoutes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'employees', component: EmployeeListComponent },
-    { path: 'employees/:code', component: EmployeeComponent },
-2: conver record name as link in employee.component.html
-	<td>
-		<a [routerLink]="['/employees',employee.code]">
-			{{employee.code | uppercase}}
-		</a>
-	</td>
-3: changes in employee.service.ts
-	getEmployeeByCode(empCode: string): Observable<IEmployee> {
-		return this._http.get("http://localhost:31324/api/employees/" + empCode)
-			.map((response: Response) => <IEmployee>response.json())
-			.catch(this.handleError);
-	} 
+-----------------------------------------------------------------------------------------------------------------------
 	
-
-*********************************************
-************     Java Brains  ***************
-*********************************************
-create project from Angular CLI
-	$ng new firstprojecct
-	run server(ng serve) (port will be 4200)
-you can test it now http://localhost:4200/ (that's it)
-
-when we try to access application by default it loads index.html
-index.html contains root component that is app component.
-
-create component in CLI
-	$ng generate component hello-world
-	it create four files in src/app/hello-world/
-	hello-world-component.ts, html, css, spec.ts
-	and also updates src/app/app.module.ts
-
-to use hello-world component in app.compo.html, just add hello-world selector.
-
-how to displlay dynamic time without refreshing the page(use setInterval method)
-constructor(){
-	setInterval(()=>{
-	let currentDate = new Date();
-	this.message = currentDate.toDateString()+' '+currentDate.toLocaleTimeString();
-	},
-	1000);
-}
-
-How to get any attribute value in component(we can use @input)
-	if we have like <app-emp name="emp1"></app-emp> then 
-	in component class
-	@Input("name")username:string;
-	user:string;
-	ngOnInit(){
-		this.user=this.username;
-	}
-	but you can not do it in constructor. constructor is exicuted when instance is created but vallues will be after object instation.
-
-
-How to pass object(Emp) to component
-	first create ts file Emp then
-	html should have something like <app-emp [name]="emp1"></app-emp> then
-	in emp component class
-	@Input("name")username:Emp;
-	but where do we intiaze Emp?
-	we can do it in app componet (if app component html passing emp to emp component)
-	emp:Emp
-	constructor(){
-	this.emp= new Emp();
-	this.emp.fname="ab";
-	this.emp.lname="xy";
-	}
-
-
-
-	
-#############################################
-how to invoke secured webservices
-how to handle errors
-how to validate user input data
-how to develope form data
-logging
-have you ever used javascript tag library
-
 what is difference between AngularJS and Angular 2
 	AngularJS is based on the model view controller, whereas Angular 2 is based on the components structure
 how to create project folder
@@ -205,7 +112,8 @@ How to created nested component
 		create employee folder in app folder
 		create employee.componet.html and employee.component.ts in employee folder
 	in app.module.ts file
-		import employee component: import { EmployeeComponent } from './employee/employee.component'
+		import employee component 
+			import { EmployeeComponent } from './employee/employee.component'
 		and change decalration
 			@NgModule({
 				delaration : [AppComponet, EmployeeComponent],
@@ -563,13 +471,89 @@ what is route parameter
 		let id:string = this._activatedRoute.snapshot.param['id'];
 		this._empService.getEmpById(id).subcribe(.....);
 
+how to convert employ record in employ component to link to display details
+---------------------------------------------------------------------------
+1: add parameter router in app module
+	const appRoutes: Routes = [
+    { path: 'home', component: HomeComponent },
+    { path: 'employees', component: EmployeeListComponent },
+    { path: 'employees/:code', component: EmployeeComponent },
+2: conver record name as link in employee.component.html
+	<td>
+		<a [routerLink]="['/employees',employee.code]">
+			{{employee.code | uppercase}}
+		</a>
+	</td>
+3: changes in employee.service.ts
+	getEmployeeByCode(empCode: string): Observable<IEmployee> {
+		return this._http.get("http://localhost:31324/api/employees/" + empCode)
+			.map((response: Response) => <IEmployee>response.json())
+			.catch(this.handleError);
+	} 
 
 
 
 
+	
+
+*********************************************
+************     Java Brains  ***************
+*********************************************
+create project from Angular CLI
+	$ng new firstprojecct
+	run server(ng serve) (port will be 4200)
+you can test it now http://localhost:4200/ (that's it)
+
+when we try to access application by default it loads index.html
+index.html contains root component that is app component.
+
+create component in CLI
+	$ng generate component hello-world
+	it create four files in src/app/hello-world/
+	hello-world-component.ts, html, css, spec.ts
+	and also updates src/app/app.module.ts
+
+to use hello-world component in app.compo.html, just add hello-world selector.
+
+how to displlay dynamic time without refreshing the page(use setInterval method)
+constructor(){
+	setInterval(()=>{
+	let currentDate = new Date();
+	this.message = currentDate.toDateString()+' '+currentDate.toLocaleTimeString();
+	},
+	1000);
+}
+
+How to get any attribute value in component(we can use @input)
+	if we have like <app-emp name="emp1"></app-emp> then 
+	in component class
+	@Input("name")username:string;
+	user:string;
+	ngOnInit(){
+		this.user=this.username;
+	}
+	but you can not do it in constructor. constructor is exicuted when instance is created but vallues will be after object instation.
 
 
+How to pass object(Emp) to component
+	first create ts file Emp then
+	html should have something like <app-emp [name]="emp1"></app-emp> then
+	in emp component class
+	@Input("name")username:Emp;
+	but where do we intiaze Emp?
+	we can do it in app componet (if app component html passing emp to emp component)
+	emp:Emp
+	constructor(){
+	this.emp= new Emp();
+	this.emp.fname="ab";
+	this.emp.lname="xy";
+	}
 
 
-
-
+#############################################
+how to invoke secured webservices
+how to handle errors
+how to validate user input data
+how to develope form data
+logging
+have you ever used javascript tag library
